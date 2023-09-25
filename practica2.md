@@ -1,1 +1,1 @@
-# Politica de contraseñas
+# Política de contraseñas

@@ -3,7 +3,7 @@
 ## ÍNDICE
 
 - [Práctica 1: Logs centralizados.](./practica1.md)
-- [Práctica 2: Politica de contraseñas.](./practica2.md)
+- [Práctica 2: Política de contraseñas.](./practica2.md)
 
 <!--
 **LuciaIbarrola/LuciaIbarrola** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
