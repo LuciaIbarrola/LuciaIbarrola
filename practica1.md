@@ -59,4 +59,3 @@ Ahora en el servidor podemos observar en el fichero */var/log/syslog*.
 cat /var/log/syslog
 ```
 
-## Prueba
