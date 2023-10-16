@@ -80,7 +80,7 @@ $mkfs.ext4 /dev/md0
 3. **Volúmenes Lógicos (LVs)**: Unidades de almacenamiento flexibles para usuarios y aplicaciones.
 
 
-Para la práctica crearemos un volúmen lógico que ocupará el 60% del almacenamiento.
+Para la práctica crearemos un volúmen lógico que ocupará el 95% del almacenamiento.
 
 ![LVdata001](images/LVM1.png)
 
@@ -116,4 +116,63 @@ $sudo vgscan
 ```
 Por último creamos el **volúmen lógico** LVdata001:
 ```bash
+$sudo lvcreate -n LVdata001 -l 95%VG VGdata000
 ```
+Para ver:
+```bash
+$lvscan 
+  ACTIVE            '/dev/VGdata000/LVdata001' [<9,48 GiB] inherit
+```
+Por motivos academicos necesito redimensionar el volúmen lógico y añadiré otro. Dejándolos de la siguiente manera:
+
+![Esquema LVM2](images/LVM2.png)
+
+```bash
+# Lo redimensionamos:
+$sudo lvresize -l 60%VG /dev/VGdata000/LVdata001
+Size of logical volume VGdata000/LVdata001 changed from 1,00 GiB (256 extents) to <5,99 GiB (1533 extents).
+Logical volume VGdata000/LVdata001 successfully resized.
+
+# Comprobamos:
+$lvscan 
+  ACTIVE            '/dev/VGdata000/LVdata001' [<5,99 GiB] inherit
+
+# Para crear el segundo volúmen lógico:
+$sudo lvcreate -n LVdata002 -l 40%VG VGdata000
+  Logical volume "LVdata002" created.
+
+# Comprobamos que los dos estén correctamente:
+$lvscan 
+  ACTIVE            '/dev/VGdata000/LVdata001' [<5,99 GiB] inherit
+  ACTIVE            '/dev/VGdata000/LVdata002' [<3,99 GiB] inherit
+
+```
+
+Ahora montaremos el primer volúmen y crearemos contenido:
+
+```bash
+# Para darle formato:
+$sudo mkfs.ext4 /dev/VGdata000/LVdata001
+
+# Carpeta donde lo montaremos:
+$sudo mkdir /mnt/LVdata001
+$cd /mnt/LVdata001
+
+# Montamos:
+$sudo mount /dev/VGdata000/LVdata001 /mnt/LVdata001
+
+# Para crear contenido:
+$dd if=/dev/zero of=/mnt/LVdata001/archivo1.img bs=1M count=1000
+```
+Ahora queremos comprobar que si un disco falla, uno de los de repuesto entra en acción, el contenido de estos archivos no se verá afectado, para ello haremos lo siguiente:
+
+```bash
+# Creamos la función de resumen de la carpeta antes creada, donde hemos montado el volúmen lógico, para después poder comprobar su integridad:
+
+$md5sum /mnt/LVdata001/archivo1.img > checksumLV1.txt
+$ls
+archivo1.img  checksumLV1.txt  lost+found
+
+```
+
+
