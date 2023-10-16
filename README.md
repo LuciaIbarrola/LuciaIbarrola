@@ -1,6 +1,6 @@
 ### ¡Hola! 👋
 
-## ÍNDICE
+## ÍNDICE :)
 
 - [Práctica 1: Logs centralizados.](./practica1.md)
 - [Práctica 2: Política de contraseñas.](./practica2.md)
