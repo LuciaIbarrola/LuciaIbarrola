@@ -58,3 +58,5 @@ Ahora en el servidor podemos observar en el fichero */var/log/syslog*.
 ```bash
 cat /var/log/syslog
 ```
+
+## Prueba
