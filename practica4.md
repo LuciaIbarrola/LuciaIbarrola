@@ -175,4 +175,5 @@ archivo1.img  checksumLV1.txt  lost+found
 
 ```
 
+Ahora quitaremos un disco para simular un fallo. Y comprobamos si el checksum es igual, y como dice que es igual está correcto.
 

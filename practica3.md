@@ -95,12 +95,15 @@ $getfacl DIRECTORIO
 
 ```bash
 # S1 no puede ver dentro del directorio ESO2.
+No deja acceder.
 ```
 
 ```bash
 # Si creo una carpeta en ESO1 llamada MATH, los alumnos de ESO1 pueden acceder a dicha carpeta.
+Los alumnos pueden acceder.
 ```
 
 ```bash
 # El profesor T2 no puede editar dentro de la carpeta de los profesores.
+No puede editar.
 ```
