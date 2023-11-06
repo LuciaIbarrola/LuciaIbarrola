@@ -106,7 +106,7 @@ Ahora, tiene dos archivos importantes, ~/easy-rsa/pki/ca.crt y ~/easy-rsa/pki/pr
 
 Con esto, estableció su CA y esta se encuentra lista para emplearse en la firma de solicitudes de certificados y revocar certificados.
 
-#### Paso 4: Distribuir el certificado público de su entidad de certificación
+### Paso 4: Distribuir el certificado público de su entidad de certificación
 
 Ahora, su CA está configurada y lista para funcionar como root de confianza para cualquier sistema que desee que la use. Puede agregar el certificado de la CA a sus servidor Apache. Cualquier usuario o servidor que necesite verificar la identidad de otro usuario o servidor de su red debe contar con una copia del archivo ca.crt importada en el almacén de certificados de su sistema operativo.
 
@@ -314,6 +314,15 @@ systemctl restart apache2
 
 ![Alt text](image-2.png)
 
+Editamos el fichero /etc/hosts para añadir nuestra ip y nuestros nombres de entidad:
+
+```bash
+10.0.2.15     carlu-server
+```
+
 Para evitar el mensaje de error debemos indicar al navegador que los certificados emitidos por carlu-server son fiables. Para ello debemos instalar el certificado público que nos facilita el CA carlu-server.(ca.crt)
 
 ![Alt text](image-3.png)
+
+Como último paso editamos el fichero /etc/hosts y añadimos ip y carlu-server.
+
