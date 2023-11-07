@@ -4,6 +4,11 @@
 
 - [Práctica 1: Logs centralizados.](./practica1.md)
 - [Práctica 2: Política de contraseñas.](./practica2.md)
+- [Pŕactica 3: ACL - Access Control List.](./practica3.md)
+- [Práctica 4: RAIDS y LVM](./practica4.md)
+- [Pŕcatica 5: Certificado TLS](./practica5.md)
+- [Práctica 6: Endurecimiento de Apache](./practica6.md)
+
 
 <!--
 **LuciaIbarrola/LuciaIbarrola** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
